@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+{% block title %}Edit Order{% endblock %}
+{% block content %}
+<div class="container">
+    <h2>Edit Order</h2>
+    <form method="post">
+        <table class="table">
+            <thead>
+                <tr><th>Product</th><th>Quantity</th><th>Unit Price</th><th>Subtotal</th></tr>
+            </thead>
+            <tbody>
+                {% for item in order_items %}
+                <tr>
+                    <td>{{ item.product.name }}</td>
+                    <td>
+                        <input type="number" name="quantity_{{ item.product_id }}" class="form-control" value="{{ item.quantity }}" required>
+                    </td>
+                    <td>${{ item.unit_price }}</td>
+                    <td>${{ item.quantity * item.unit_price }}</td>
+                </tr>
+                {% endfor %}
+                <tr>
+                    <td>
+                        <select name="new_product_id" class="form-control">
+                            <option value="">Select Product</option>
+                            {% for product in all_products %}
+                            <option value="{{ product.product_id }}">{{ product.name }}</option>
+                            {% endfor %}
+                        </select>
+                    </td>
+                    <td>
+                        <input type="number" name="new_quantity" class="form-control" placeholder="Quantity">
+                    </td>
+                    <td> - </td>
+                    <td> - </td>
+                </tr>
+            </tbody>
+        </table>
+        <button type="submit" class="primary-btn">Update Order</button>
+        <a href="{{ url_for('search_orders') }}" class="primary-btn">Cancel</a>
+    </form>
+</div>
+{% endblock %}

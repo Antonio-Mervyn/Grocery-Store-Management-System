@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+{% block content %}
+<h1>Store Information</h1>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Store ID</th>
+            <th>Store Name</th>
+            <th>Address</th>
+            <th>Contact Info</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for store in stores %}
+        <tr>
+            <td>{{ store.store_id }}</td>
+            <td>{{ store.store_name }}</td>
+            <td>{{ store.address }}</td>
+            <td>{{ store.contact_info }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

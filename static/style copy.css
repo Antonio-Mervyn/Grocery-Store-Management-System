@@ -1,0 +1,369 @@
+/* General Reset and Base Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    color: #333;
+    background-color: #f8f9fa;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+/* Navbar Styles */
+.navbar {
+    background-color: #343a40;
+    color: white;
+    padding: 1em 2em;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.navbar a {
+    color: white;
+    text-decoration: none;
+    margin-left: 1em;
+}
+
+.navbar a:hover, .navbar .logout {
+    color: #f1c40f;
+}
+
+.navbar-brand a {
+    font-size: 1.5em;
+    font-weight: bold;
+    color: #f1c40f;
+    text-decoration: none;
+}
+
+/* Footer Styles */
+footer {
+    background-color: #343a40;
+    color: #adb5bd;
+    text-align: center;
+    padding: 1em 0;
+    margin-top: auto;
+}
+
+/* Container */
+.container {
+    max-width: 800px;
+    margin: 2em auto;
+    padding: 2em;
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+/* Home and Dashboard Container */
+.home-container {
+    text-align: center;
+    padding: 3em;
+}
+
+.home-container h1 {
+    font-size: 2.5em;
+    color: #343a40;
+    margin-bottom: 0.5em;
+}
+
+.dashboard-greeting {
+    font-size: 1.2em;
+    color: #6c757d;
+    margin-bottom: 2em;
+}
+
+.dashboard-actions {
+    display: flex;
+    justify-content: center;
+    gap: 1em;
+    margin-top: 1.5em;
+}
+
+/* Form Styles */
+.form-container {
+    width: 100%;
+}
+
+.form-container h2 {
+    color: #343a40;
+    margin-bottom: 1em;
+    font-size: 1.8em;
+    text-align: center;
+}
+
+form label {
+    margin-top: 1em;
+    font-weight: 500;
+    color: #555;
+}
+
+form input {
+    width: 100%;
+    padding: 0.7em;
+    margin-top: 0.3em;
+    margin-bottom: 1em;
+    border: 1px solid #ced4da;
+    border-radius: 5px;
+}
+
+/* Primary Button Style with Yellow Theme */
+.primary-btn {
+    background-color: #f1c40f;  /* Yellow theme */
+    color: #343a40;
+    font-weight: 600;
+    padding: 0.8em 1.5em;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    text-align: center;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+}
+
+.primary-btn:hover {
+    background-color: #d4ac0d;
+}
+
+
+
+/* Flash Message Styling */
+.flash-messages {
+    margin: 1em 0;
+    text-align: center;
+}
+
+.alert {
+    padding: 0.8em;
+    margin-bottom: 1em;
+    border-radius: 5px;
+    font-weight: bold;
+}
+
+.alert-success {
+    background-color: #d4edda;
+    color: #155724;
+}
+
+.alert-error {
+    background-color: #f8d7da;
+    color: #721c24;
+}
+/* 
+.home-container {
+    text-align: center;
+    padding: 3em;
+}
+
+.home-container h1 {
+    font-size: 2.5em;
+    color: #343a40;
+    margin-bottom: 0.5em;
+}
+
+.home-description {
+    font-size: 1.2em;
+    color: #6c757d;
+    margin-bottom: 1.5em; 
+} */
+
+/* Primary Button Style */
+.primary-btn {
+    background-color: #f1c40f;
+    color: #343a40;
+    font-weight: 600;
+    padding: 0.8em 1.5em;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    text-align: center;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+}
+
+.primary-btn:hover {
+    background-color: #d4ac0d;
+}
+
+
+/* Styling for Remove Button */
+.remove-btn {
+    background-color: #e74c3c;
+    color: #ffffff;
+    border: none;
+    padding: 0.4em 0.8em;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.remove-btn:hover {
+    background-color: #c0392b;
+}
+
+/* 
+.container {
+    max-width: 800px;
+    margin: 2em auto;
+    padding: 2em;
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
+} */
+
+.table {
+    width: 100%;
+    margin-top: 1em;
+    border-collapse: collapse;
+}
+
+.table th, .table td {
+    padding: 0.8em;
+    text-align: left;
+    border-bottom: 1px solid #e0e0e0;
+}
+
+.table th {
+    background-color: #f1c40f;
+    color: #343a40;
+    font-weight: 600;
+}
+
+.table tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+
+/* Base Styling for Buttons */
+.primary-btn, .cancel-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.5em 1em;
+    font-size: 16px;
+    font-weight: 600;
+    text-decoration: none;
+    cursor: pointer;
+    border: none;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+/* Primary Button - Yellow */
+.primary-btn {
+    background-color: #f1c40f;
+    color: #343a40;
+}
+
+.primary-btn:hover {
+    background-color: #d4ac0d;
+}
+
+/* Cancel Button - Red */
+.cancel-btn {
+    background-color: #e74c3c;
+    color: #ffffff;
+}
+
+.cancel-btn:hover {
+    background-color: #c0392b;
+}
+
+
+.primary-btn, .remove-btn {
+    padding: 0.5em 1em;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.remove-btn {
+    background-color: #e74c3c;
+    color: white;
+}
+
+.remove-btn:hover {
+    background-color: #c0392b;
+}
+
+
+
+.table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.table th, .table td {
+    padding: 12px;
+    border: 1px solid #ddd;
+    text-align: left;
+}
+
+.table th {
+    background-color: #f2f2f2;
+    color: #333;
+}
+
+.btn-sm {
+    padding: 5px 10px;
+    font-size: 0.875rem;
+    margin: 0 5px;
+}
+
+
+/* 
+.login-form-container {
+    width: 350px;
+    margin: 50px auto;
+    padding: 2em;
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.login-form-container h2 {
+    color: #343a40;
+    margin-bottom: 1em;
+    font-size: 1.8em;
+    text-align: center;
+}
+
+.login-form-container label {
+    display: block;
+    margin-top: 1em;
+    font-weight: 500;
+    color: #555;
+    text-align: left;
+}
+
+.login-form-container input {
+    width: 100%;
+    padding: 0.7em;
+    margin-top: 0.3em;
+    margin-bottom: 1em;
+    border: 1px solid #ced4da;
+    border-radius: 5px;
+}
+
+.primary-btn {
+    width: 100%;
+    padding: 0.8em;
+    font-weight: 600;
+    background-color: #f1c40f;
+    color: #343a40;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.primary-btn:hover {
+    background-color: #d4ac0d;
+} */

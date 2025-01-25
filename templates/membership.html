@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+{% block title %}Membership Details{% endblock %}
+
+{% block content %}
+<div class="membership-container">
+    <h2>Membership Details</h2>
+    {% if membership_card %}
+        <p>Member ID: {{ membership_card.member_id }}</p>
+        <p>Date of Issue: {{ membership_card.issue_date }}</p>
+        <p>Expiration Date: {{ membership_card.expiry_date }}</p>
+    {% else %}
+        <p>You do not have an active membership card.</p>
+    {% endif %}
+</div>
+{% endblock %}

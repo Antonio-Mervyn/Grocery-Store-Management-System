@@ -1,0 +1,111 @@
+{% extends "base.html" %}
+{% block title %}Place Order{% endblock %}
+{% block content %}
+<div class="container">
+    <h2>Place Your Order</h2>
+    <!-- Display Flash Messages -->
+    {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+            <div class="flash-messages">
+                {% for category, message in messages %}
+                    <div class="alert alert-{{ category }}">{{ message }}</div>
+                {% endfor %}
+            </div>
+        {% endif %}
+    {% endwith %}
+
+    <!-- Discount Information -->
+    {% if discount > 0 %}
+        <div class="flash-messages">
+            <p class="alert alert-success">Membership Discount Applied: ${{ discount }}</p>
+            <p>Before Discount: ${{ total_amount }}</p>
+            <p><strong>After Discount: ${{ final_amount }}</strong></p>
+        </div>
+    {% else %}
+        <p>Before Discount: ${{ total_amount }}</p>
+        <p><strong>After Discount: ${{ final_amount }}</strong></p>
+    {% endif %}
+
+    <!-- Form to Add Product to Cart -->
+    <form method="POST" action="{{ url_for('add_to_cart') }}" class="form-container">
+        <label for="product_id">Select Product:</label>
+        <select name="product_id" required>
+            {% for product in products %}
+                <option value="{{ product.product_id }}">{{ product.name }} - ${{ product.unit_price }}</option>
+            {% endfor %}
+        </select>
+
+        <label for="quantity">Quantity:</label>
+        <input type="number" name="quantity" min="1" required>
+
+        <button type="submit" class="primary-btn">Add to Cart</button>
+    </form>
+
+    <!-- Cart Summary -->
+    <h3>Your Cart</h3>
+    {% if cart_items %}
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Product</th>
+                    <th>Quantity</th>
+                    <th>Price</th>
+                    <th>Total</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for item in cart_items %}
+                    <tr>
+                        <td>{{ item.product.name }}</td>
+                        <td>{{ item.quantity }}</td>
+                        <td>${{ item.product.unit_price }}</td>
+                        <td>${{ item.quantity * item.product.unit_price }}</td>
+                        <td>
+                            <!-- Remove Button -->
+                            <form method="POST" action="{{ url_for('remove_from_cart', product_id=item.product.product_id) }}">
+                                <button type="submit" class="remove-btn">Remove</button>
+                            </form>
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        <p><strong>Cart Total Amount: ${{ total_amount }}</strong></p>
+    {% else %}
+        <p>Your cart is empty.</p>
+    {% endif %}
+    <!-- Membership Discount Section -->
+    <h3>Apply Membership Discount</h3>
+    <form method="POST" action="{{ url_for('apply_membership_discount') }}" class="form-container">
+        <label for="membership_id">Enter Membership ID:</label>
+        <input type="text" name="membership_id" required>
+        <button type="submit" class="primary-btn">Apply Discount</button>
+    </form>
+    <!-- Place Order Form -->
+    <h3>Confirm and Place Order</h3>
+    <form method="POST" action="{{ url_for('place_order') }}" class="form-container">
+        <label for="payment_method">Payment Method:</label>
+        <select name="payment_method" required>
+            <option value="cod">Cash on Delivery</option>
+            <option value="online">Online Payment</option>
+        </select>
+
+        <div id="transaction-id-section" style="display: none;">
+            <label for="transaction_id">Transaction ID:</label>
+            <input type="text" name="transaction_id">
+        </div>
+
+        <input type="hidden" name="total_amount" value="{{ total_amount }}">
+        <button type="submit" class="primary-btn">Place Order</button>
+    </form>
+</div>
+
+<script>
+    // Show Transaction ID input if online payment is selected
+    document.querySelector('select[name="payment_method"]').addEventListener('change', function() {
+        document.getElementById('transaction-id-section').style.display = 
+            this.value === 'online' ? 'block' : 'none';
+    });
+</script>
+{% endblock %}

@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="container">
+    <h2>Add Supplier</h2>
+    <form method="POST">
+        <div class="form-group">
+            <label for="supplier_id">Supplier ID</label>
+            <input type="text" class="form-control" id="supplier_id" name="supplier_id" required>
+        </div>
+        <div class="form-group">
+            <label for="supplier_name">Supplier Name</label>
+            <input type="text" class="form-control" id="supplier_name" name="supplier_name" required>
+        </div>
+        <div class="form-group">
+            <label for="product_ids">Select Products</label>
+            <select class="form-control" id="product_ids" name="product_ids" multiple>
+                {% for product in products %}
+                    <option value="{{ product.product_id }}">{{ product.name }}</option>
+                {% endfor %}
+            </select>
+            <small class="form-text text-muted">Hold Ctrl (Cmd on Mac) to select multiple products.</small>
+        </div>
+        <button type="submit" class="btn btn-primary">Add Supplier</button>
+    </form>
+</div>
+{% endblock %}

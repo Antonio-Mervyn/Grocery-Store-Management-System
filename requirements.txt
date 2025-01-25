@@ -1,0 +1,17 @@
+blinker
+cffi
+click
+cryptography
+Flask
+Flask-Login
+Flask-SQLAlchemy
+Flask-WTF
+itsdangerous
+Jinja2
+MarkupSafe
+pycparser
+PyMySQL
+SQLAlchemy
+typing_extensions
+Werkzeug
+WTForms

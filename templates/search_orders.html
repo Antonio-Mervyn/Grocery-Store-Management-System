@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container">
+    <h1>Search Orders</h1>
+    <form method="GET" action="{{ url_for('search_orders') }}">
+        <div class="form-group">
+            <input type="text" name="search_query" class="form-control" placeholder="Search for orders...">
+        </div>
+        <button type="submit" class="primary-btn">Search</button>
+    </form>
+
+    {% if orders %}
+        <h2>Order Results</h2>
+        <table class="table table-striped mt-4">
+            <thead>
+                <tr>
+                    <th>Order Number</th>
+                    <th>Date</th>
+                    <th>Total Amount</th>
+                    <th>Customer</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for order in orders %}
+                    <tr>
+                        <td>{{ order.order_num }}</td>
+                        <td>{{ order.order_date }}</td>
+                        <td>{{ order.total_amount }}</td>
+                        <td>{{ order.customer_name }}</td>
+                        <td>
+                            <a href="{{ url_for('view_order', order_num=order.order_num) }}" class="primary-btn">View</a>
+                            <a href="{{ url_for('edit_order', order_num=order.order_num) }}" class="primary-btn">Edit</a>
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    {% else %}
+        <p>No orders found.</p>
+    {% endif %}
+</div>
+{% endblock %}

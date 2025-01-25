@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+{% block title %}Home - Grocery Management{% endblock %}
+{% block content %}
+<div class="home-container">
+    <h1>Welcome to Grocery Management</h1>
+    <p class="home-description">Streamline your grocery shopping with easy ordering and management.</p>
+    <div class="button-group">
+        <a href="{{ url_for('login') }}" class="primary-btn">Login</a>
+        <a href="{{ url_for('register') }}" class="primary-btn">Customer Registration</a>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% block title %}View Customer{% endblock %}
+{% block content %}
+<div class="container">
+    <h2>Customer Details</h2>
+    <table class="table">
+        <tr><th>First Name</th><td>{{ customer.first_name }}</td></tr>
+        <tr><th>Last Name</th><td>{{ customer.last_name }}</td></tr>
+        <tr><th>Email</th><td>{{ customer.email }}</td></tr>
+        <tr><th>Address</th><td>{{ customer.address }}</td></tr>
+        <tr><th>Phone Number</th><td>{{ customer.phone_number }}</td></tr>
+    </table>
+    <a href="{{ url_for('employee_dashboard') }}" class="primary-btn">Back</a>
+    <a href="{{ url_for('edit_customer', user_id=customer.user_id) }}" class="primary-btn">Edit Customer</a>
+</div>
+{% endblock %}

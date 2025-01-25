@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+{% block title %}View Order{% endblock %}
+{% block content %}
+<div class="container">
+    <h2>Order Details</h2>
+    <table class="table">
+        <tr><th>Order Number</th><td>{{ order.order_num }}</td></tr>
+        <tr><th>Order Date</th><td>{{ order.order_date }}</td></tr>
+        <tr><th>Total Amount</th><td>${{ order.total_amount }}</td></tr>
+    </table>
+    <h3>Order Items</h3>
+    <table class="table">
+        <thead>
+            <tr><th>Product</th><th>Quantity</th><th>Unit Price</th><th>Subtotal</th></tr>
+        </thead>
+        <tbody>
+            {% for item in order_items %}
+            <tr>
+                <td>{{ item.product.name }}</td>
+                <td>{{ item.quantity }}</td>
+                <td>${{ item.unit_price }}</td>
+                <td>${{ item.quantity * item.unit_price }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <a href="{{ url_for('search_orders') }}" class="primary-btn">Back</a>
+    <a href="{{ url_for('edit_order', order_num=order.order_num) }}" class="primary-btn">Edit Order</a>
+</div>
+{% endblock %}

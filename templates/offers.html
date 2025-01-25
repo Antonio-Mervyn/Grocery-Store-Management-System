@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+{% block title %}Offers{% endblock %}
+{% block content %}
+<h2>Current Offers</h2>
+
+{% if sales %}
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Offer ID</th>
+                <th>Store ID</th>
+                <th>Date</th>
+                <th>Offer Details</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for sale in sales %}
+                <tr>
+                    <td>{{ sale.sale_id }}</td>
+                    <td>{{ sale.store_id }}</td>
+                    <td>{{ sale.date_of_issue }}</td>
+                    <td>{{ sale.conditions }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% else %}
+    <p>No current offers available.</p>
+{% endif %}
+{% endblock %}
